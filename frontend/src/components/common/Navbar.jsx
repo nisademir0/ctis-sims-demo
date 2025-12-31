@@ -13,16 +13,16 @@ import { clsx } from 'clsx';
  * Top navigation bar
  */
 export default function Navbar({ onMenuClick }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { user, logout, loading } = useAuth();
-  const { theme, changeTheme, changeLanguage } = usePreferences();
   const navigate = useNavigate();
-  const isDarkMode = theme === 'dark';
 
   const handleLogout = async () => {
-    await l } = useTranslation();
-  const { user, logout, loading } = useAuth();
-  const navigate = useNavigate() is initializing
+    await logout();
+    navigate('/login');
+  };
+  
+  // Show loading skeleton while auth is initializing
   if (loading) {
     return (
       <div data-testid="navbar-loading" className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -60,10 +60,10 @@ export default function Navbar({ onMenuClick }) {
           {/* Search input can go here */}
         </div>
 
-        {/* Right side - theme toggle, notifications, language selector and user menu */}
+        {/* Right side - user menu */}
         <div className="ml-4 flex items-center gap-2 lg:ml-6">
-          {/* Theme Toggluser menu */}
-        <div className="ml-4 flex items-center gap-2 lg:ml-6">          <Menu as="div" className="relative ml-3">
+          {/* User menu */}
+          <Menu as="div" className="relative ml-3">
             <Menu.Button data-testid="user-menu-button" className="flex items-center max-w-xs rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
               <span className="sr-only">Open user menu</span>
               <div className="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold">
@@ -90,7 +90,6 @@ export default function Navbar({ onMenuClick }) {
               <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-gray-800 py-1 shadow-lg ring-1 ring-black dark:ring-gray-700 ring-opacity-5 focus:outline-none">
                 {userNavigation.map((item) => (
                   <Fragment key={item.name}>
-                    {item.divider && <div className="border-t border-gray-100 dark:border-gray-700 my-1" />}
                     <Menu.Item>
                       {({ active }) => (
                         <button
