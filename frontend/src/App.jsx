@@ -8,8 +8,6 @@ import UserSettings from './pages/UserSettings';
 import ChangePassword from './pages/ChangePassword';
 import Notifications from './pages/Notifications';
 import Profile from './pages/Profile';
-import ForgotPassword from './pages/auth/ForgotPassword';
-import ResetPassword from './pages/auth/ResetPassword';
 import VerifyEmail from './pages/auth/VerifyEmail';
 
 // Inventory Pages (FAZ 3)
@@ -72,8 +70,6 @@ export default function App() {
           <Routes>
           {/* Public routes */}
           <Route path="/login" element={<Login />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
           
           {/* Protected routes with Layout */}

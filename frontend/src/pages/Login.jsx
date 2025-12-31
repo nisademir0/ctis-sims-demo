@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const { t } = useTranslation();
@@ -112,21 +112,6 @@ export default function Login() {
               required
               disabled={loading}
             />
-          </div>
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
-              <input
-                id="remember"
-                type="checkbox"
-                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 dark:border-gray-600 rounded"
-              />
-              <label htmlFor="remember" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
-                {t('auth.rememberMe')}
-              </label>
-            </div>
-            <Link to="/forgot-password" className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-500">
-              {t('auth.forgotPassword')}?
-            </Link>
           </div>
 
           <button

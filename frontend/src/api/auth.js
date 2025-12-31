@@ -28,18 +28,6 @@ export const getCurrentUser = async () => {
   return data;
 };
 
-// Forgot Password
-export const forgotPassword = async (email) => {
-  const { data } = await apiClient.post('/forgot-password', { email });
-  return data;
-};
-
-// Reset Password
-export const resetPassword = async (resetData) => {
-  const { data } = await apiClient.post('/reset-password', resetData);
-  return data;
-};
-
 // Send Email Verification
 export const sendVerificationEmail = async () => {
   const { data } = await apiClient.post('/email/verification-notification');
