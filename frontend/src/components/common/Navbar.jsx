@@ -50,20 +50,9 @@ export default function Navbar({ onMenuClick }) {
 
   const userNavigation = [
     { 
-      name: t('nav.profile') || 'Profil', 
-      icon: UserCircleIcon, 
-      onClick: () => navigate('/profile') 
-    },
-    { 
-      name: t('nav.settings'), 
-      icon: Cog6ToothIcon, 
-      onClick: () => navigate('/settings') 
-    },
-    { 
       name: t('nav.logout'), 
       icon: ArrowRightOnRectangleIcon, 
       onClick: handleLogout,
-      divider: true,
     },
   ];
 

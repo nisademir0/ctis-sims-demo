@@ -5,13 +5,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import {
   HomeIcon,
   CubeIcon,
-  ArrowsRightLeftIcon,
-  ClipboardDocumentListIcon,
-  ShoppingCartIcon,
-  WrenchScrewdriverIcon,
   ChatBubbleLeftRightIcon,
-  ChartBarIcon,
-  Cog6ToothIcon,
   XMarkIcon,
   Bars3Icon,
   ChevronDownIcon,
@@ -182,76 +176,11 @@ export default function Sidebar({ sidebarOpen, setSidebarOpen }) {
   const navigation = [
     { name: t('nav.dashboard'), href: '/', icon: HomeIcon, roles: ['all'] },
     { name: t('nav.inventory'), href: '/inventory', icon: CubeIcon, roles: ['all'] },
-    
-    // Yönetim hesapları: Tüm işlemleri görür
-    isManager && { 
-      name: t('nav.transactions'), 
-      href: '/transactions', 
-      icon: ArrowsRightLeftIcon, 
-      roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER],
-      subItems: [
-        { name: t('transactions.all_transactions'), href: '/transactions', roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER] },
-        { name: t('transactions.overdue'), href: '/transactions/overdue', roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER] },
-      ]
-    },
-    
-    // Staff hesapları: Sadece kendi ödünçlerini görür
-    isStaff && { 
-      name: t('transactions.d_n_lerim'), 
-      href: '/my-loans', 
-      icon: ClipboardDocumentListIcon, 
-      roles: [ROLES.STAFF] 
-    },
-    
-    { 
-      name: t('nav.maintenance'), 
-      href: '/maintenance-requests', 
-      icon: WrenchScrewdriverIcon, 
-      roles: ['all'] 
-    },
-    { 
-      name: t('nav.purchase'), 
-      href: '/purchase-requests', 
-      icon: ShoppingCartIcon, 
-      roles: ['all'] 
-    },
     { 
       name: t('nav.chatbot'), 
       href: '/chatbot', 
       icon: ChatBubbleLeftRightIcon, 
-      roles: ['all'],
-      subItems: [
-        { name: 'Sohbet', href: '/chatbot', roles: ['all'] },
-        { name: t('other.gecmis'), href: '/chatbot/history', roles: ['all'] },
-        { name: 'Analytics', href: '/chatbot/analytics', roles: [ROLES.ADMIN] },
-      ]
-    },
-    // Raporlar sadece yöneticiler için
-    isManager && { 
-      name: t('nav.reports'), 
-      href: '/reports', 
-      icon: ChartBarIcon, 
-      roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER],
-      subItems: [
-        { name: t('other.genel_bakis'), href: '/reports', roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER] },
-        { name: t('nav.inventory'), href: '/reports/inventory', roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER] },
-        { name: t('nav.transactions'), href: '/reports/transactions', roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER] },
-        { name: t('nav.maintenance'), href: '/reports/maintenance', roles: [ROLES.ADMIN, ROLES.INVENTORY_MANAGER] },
-      ]
-    },
-    // Yönetim paneli sadece admin için
-    userRole === ROLES.ADMIN && { 
-      name: t('nav.admin'), 
-      icon: Cog6ToothIcon, 
-      roles: [ROLES.ADMIN],
-      subItems: [
-        { name: t('nav.users'), href: '/admin/users', roles: [ROLES.ADMIN] },
-        { name: t('nav.roles'), href: '/admin/roles', roles: [ROLES.ADMIN] },
-        { name: 'Kategoriler', href: '/admin/categories', roles: [ROLES.ADMIN] },
-        { name: t('admin.sistem_ayarlar'), href: '/admin/settings', roles: [ROLES.ADMIN] },
-        { name: t('admin.denetim_kay_tlar'), href: '/admin/audit', roles: [ROLES.ADMIN] },
-        { name: t('nav.backup'), href: '/admin/backup', roles: [ROLES.ADMIN] },
-      ]
+      roles: ['all']
     },
   ].filter(Boolean); // false olan itemleri temizle
 
