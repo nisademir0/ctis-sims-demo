@@ -1,0 +1,147 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Notification;
+use App\Services\NotificationService;
+use Illuminate\Http\Request;
+
+class NotificationController extends Controller
+{
+    protected $notificationService;
+
+    public function __construct(NotificationService $notificationService)
+    {
+        $this->notificationService = $notificationService;
+    }
+
+    /**
+     * Get all notifications for the authenticated user
+     */
+    public function index(Request $request)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $perPage = $request->input('per_page', 20);
+        $filter = $request->input('filter', 'all'); // all, unread, read
+
+        $query = Notification::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc');
+
+        if ($filter === 'unread') {
+            $query->unread();
+        } elseif ($filter === 'read') {
+            $query->read();
+        }
+
+        $notifications = $query->paginate($perPage);
+
+        return response()->json([
+            'notifications' => $notifications->items(),
+            'pagination' => [
+                'current_page' => $notifications->currentPage(),
+                'last_page' => $notifications->lastPage(),
+                'per_page' => $notifications->perPage(),
+                'total' => $notifications->total(),
+            ],
+            'unread_count' => $this->notificationService->getUnreadCount($user->id),
+        ]);
+    }
+
+    /**
+     * Get unread notification count
+     */
+    public function unreadCount(Request $request)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        return response()->json([
+            'count' => $this->notificationService->getUnreadCount($user->id),
+        ]);
+    }
+
+    /**
+     * Mark a notification as read
+     */
+    public function markAsRead(Request $request, $id)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $notification = Notification::where('user_id', $user->id)
+            ->findOrFail($id);
+
+        $notification->markAsRead();
+
+        return response()->json([
+            'message' => 'Bildirim okundu olarak işaretlendi',
+            'notification' => $notification,
+        ]);
+    }
+
+    /**
+     * Mark all notifications as read
+     */
+    public function markAllAsRead(Request $request)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $count = $this->notificationService->markAllAsRead($user->id);
+
+        return response()->json([
+            'message' => "{$count} bildirim okundu olarak işaretlendi",
+            'count' => $count,
+        ]);
+    }
+
+    /**
+     * Delete a notification
+     */
+    public function destroy(Request $request, $id)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $notification = Notification::where('user_id', $user->id)
+            ->findOrFail($id);
+
+        $notification->delete();
+
+        return response()->json([
+            'message' => 'Bildirim başarıyla silindi',
+        ]);
+    }
+
+    /**
+     * Delete all read notifications
+     */
+    public function deleteAllRead(Request $request)
+    {
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
+
+        $count = Notification::where('user_id', $user->id)
+            ->read()
+            ->delete();
+
+        return response()->json([
+            'message' => "{$count} bildirim silindi",
+            'count' => $count,
+        ]);
+    }
+}

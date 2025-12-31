@@ -1,0 +1,110 @@
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/auth.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/auth.spec.js:6:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/chatbot.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/chatbot.spec.js:6:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/inventory.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/inventory.spec.js:6:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/maintenance.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/maintenance.spec.js:5:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/nfr.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/nfr.spec.js:6:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/notifications.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/notifications.spec.js:6:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/purchase.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/purchase.spec.js:6:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/reports.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/reports.spec.js:6:1)
+SyntaxError: /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js: `test` has already been exported. Exported identifiers must be unique. (366:9)
+
+  364 |
+  365 | // Export test object for tests to use
+> 366 | export { test };
+      |          ^
+  367 |
+
+   at tests/e2e/tests/transactions.spec.js:366
+
+
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/transactions.spec.js:6:1)
+Error: No tests found
+

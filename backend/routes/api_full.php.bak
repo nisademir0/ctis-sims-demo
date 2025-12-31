@@ -1,0 +1,261 @@
+<?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\MaintenanceRequestController;
+use App\Http\Controllers\PurchaseRequestController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Admin\SettingsController;
+use App\Http\Controllers\QrCodeController;
+
+// ============================================================================
+// PUBLIC AUTHENTICATION ROUTES
+// ============================================================================
+Route::middleware('throttle:login')->group(function () {
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [AuthController::class, 'register']); // For admin to create users
+    
+    // Password Reset (Public - FR-1.6, FR-1.7)
+    Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
+    Route::post('/reset-password', [AuthController::class, 'resetPassword']);
+});
+
+// Email Verification Route (Public - must be accessible via signed URL)
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return response()->json(['message' => 'E-posta başarıyla doğrulandı.']);
+})->middleware(['auth:sanctum', 'signed'])->name('verification.verify');
+
+// Public settings (no auth required)
+Route::get('/system/public-settings', [SettingsController::class, 'getPublicSettings']);
+
+// ============================================================================
+// AUTHENTICATED USER ROUTES - Profile & Email Verification
+// ============================================================================
+Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
+    // Authentication
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/user', [AuthController::class, 'user']);
+    
+    // Email Verification (FR-1.4, FR-1.5)
+    Route::post('/email/verification-notification', [AuthController::class, 'sendVerificationEmail']);
+    Route::post('/email/verify', [AuthController::class, 'verifyEmail']);
+    
+    // Profile Management (FR-1.8, FR-1.9, FR-1.10, FR-1.11)
+    Route::get('/profile', [AuthController::class, 'getProfile']);
+    Route::post('/profile', [AuthController::class, 'updateProfile']);
+    Route::post('/change-password', [AuthController::class, 'changePassword']);
+    Route::delete('/avatar', [AuthController::class, 'deleteAvatar']);
+    
+    // User Preferences
+    Route::get('/preferences', [AuthController::class, 'getPreferences']);
+    Route::put('/preferences', [AuthController::class, 'updatePreferences']);
+    Route::post('/preferences/reset', [AuthController::class, 'resetPreferences']);
+});
+
+// ============================================================================
+// ADMIN ONLY ROUTES - System configuration, backups, user management
+// ============================================================================
+Route::middleware(['auth:sanctum', 'role:admin', 'throttle:api'])->group(function () {
+    // User Management (Full CRUD - Admin only)
+    Route::get('/users', [AuthController::class, 'getAllUsers']); // Admin-only: full user list with details
+    Route::post('/users', [AuthController::class, 'createUser']);
+    Route::put('/users/{id}', [AuthController::class, 'updateUser']);
+    Route::delete('/users/{id}', [AuthController::class, 'deleteUser']);
+    
+    // Role Management (Admin only)
+    Route::get('/admin/roles', [RoleController::class, 'index']);
+    Route::get('/admin/roles/{id}', [RoleController::class, 'show']);
+    Route::post('/admin/roles', [RoleController::class, 'store']);
+    Route::put('/admin/roles/{id}', [RoleController::class, 'update']);
+    Route::delete('/admin/roles/{id}', [RoleController::class, 'destroy']);
+    Route::get('/admin/permissions', [RoleController::class, 'getPermissions']);
+    Route::get('/admin/users/assignable', [RoleController::class, 'getAssignableUsers']);
+    
+    // System Settings Management
+    Route::get('/admin/settings', [SettingsController::class, 'index']);
+    Route::get('/admin/settings/{category}', [SettingsController::class, 'getByCategory']);
+    Route::put('/admin/settings', [SettingsController::class, 'update']);
+    Route::post('/admin/settings/{category}/reset', [SettingsController::class, 'reset']);
+    
+    // Backup & Restore Management (Admin only)
+    Route::get('/admin/backups', [\App\Http\Controllers\BackupController::class, 'index']);
+    Route::post('/admin/backups', [\App\Http\Controllers\BackupController::class, 'store']);
+    Route::post('/admin/backups/{id}/restore', [\App\Http\Controllers\BackupController::class, 'restore']);
+    Route::get('/admin/backups/{id}/download', [\App\Http\Controllers\BackupController::class, 'download']);
+    Route::delete('/admin/backups/{id}', [\App\Http\Controllers\BackupController::class, 'destroy']);
+    Route::get('/admin/backups/latest', [\App\Http\Controllers\BackupController::class, 'latest']);
+    
+    // Category Management (Admin only)
+    Route::get('/admin/categories', [\App\Http\Controllers\CategoryController::class, 'index']);
+    Route::post('/admin/categories', [\App\Http\Controllers\CategoryController::class, 'store']);
+    Route::get('/admin/categories/{id}', [\App\Http\Controllers\CategoryController::class, 'show']);
+    Route::put('/admin/categories/{id}', [\App\Http\Controllers\CategoryController::class, 'update']);
+    Route::delete('/admin/categories/{id}', [\App\Http\Controllers\CategoryController::class, 'destroy']);
+    Route::get('/admin/categories/{id}/schema', [\App\Http\Controllers\CategoryController::class, 'getSchema']);
+});
+
+// ============================================================================
+// ADMIN + INVENTORY MANAGER ROUTES - Inventory CRUD, lending, approvals
+// ============================================================================
+Route::middleware(['auth:sanctum', 'role:admin,inventory_manager', 'throttle:api'])->group(function () {
+    // Inventory Management (Create, Update, Delete)
+    Route::post('/items', [InventoryController::class, 'store']);
+    Route::put('/items/{id}', [InventoryController::class, 'update']);
+    Route::delete('/items/{id}', [InventoryController::class, 'destroy']);
+    
+    // Bulk Operations (FR-2.3)
+    Route::post('/items/bulk-update-status', [InventoryController::class, 'bulkUpdateStatus']);
+    Route::post('/items/bulk-update-category', [InventoryController::class, 'bulkUpdateCategory']);
+    Route::post('/items/bulk-delete', [InventoryController::class, 'bulkDelete']);
+    
+    // Export Items
+    Route::get('/items/export', [InventoryController::class, 'export']);
+    
+    // Transaction Management (Lending & Returning - Admin/Manager only for checkout/return)
+    Route::post('/transactions/checkout', [TransactionController::class, 'checkout']);
+    Route::post('/transactions/{id}/return', [TransactionController::class, 'checkin']);
+    Route::get('/transactions/stats', [TransactionController::class, 'stats']);
+    Route::get('/transactions/overdue', [TransactionController::class, 'overdue']);
+    
+    // Maintenance Request Management - Workflow actions (Admin & Inventory Manager only)
+    Route::get('/maintenance-requests/stats', [MaintenanceRequestController::class, 'statistics']);
+    Route::post('/maintenance-requests/{id}/assign', [MaintenanceRequestController::class, 'assign']);
+    Route::post('/maintenance-requests/{id}/cancel', [MaintenanceRequestController::class, 'cancel']);
+    Route::delete('/maintenance-requests/{id}', [MaintenanceRequestController::class, 'destroy']);
+    
+    // Purchase Request Approval & Management (Admin & Inventory Manager only)
+    Route::get('/purchase-requests/stats', [PurchaseRequestController::class, 'statistics']);
+    Route::post('/purchase-requests/{id}/approve', [PurchaseRequestController::class, 'approve']);
+    Route::post('/purchase-requests/{id}/reject', [PurchaseRequestController::class, 'reject']);
+    Route::post('/purchase-requests/{id}/mark-ordered', [PurchaseRequestController::class, 'markAsOrdered']);
+    Route::post('/purchase-requests/{id}/mark-received', [PurchaseRequestController::class, 'markAsReceived']);
+});
+
+// ============================================================================
+// ALL AUTHENTICATED USERS - Read-only inventory, submit requests, chatbot
+// ============================================================================
+Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
+    // User Info
+    Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    
+    // Inventory (Read-Only for Staff)
+    Route::get('/items', [InventoryController::class, 'index']);
+    Route::get('/items/{id}', [InventoryController::class, 'show']);
+    Route::get('/items/stats', [InventoryController::class, 'stats']);
+    
+    // QR Code Generation (FR-2.8)
+    Route::get('/items/{id}/qr-code', [QrCodeController::class, 'generateItemQrCode']);
+    Route::get('/items/{id}/qr-code/base64', [QrCodeController::class, 'getItemQrCodeBase64']);
+    Route::post('/qr-code/decode', [QrCodeController::class, 'decodeQrCode']);
+    Route::post('/qr-code/bulk', [QrCodeController::class, 'generateBulkQrCodes']);
+    
+    // Helper Data
+    Route::get('/categories', [InventoryController::class, 'categories']);
+    Route::get('/users/list', [InventoryController::class, 'users']); // For assignment dropdown (simple list)
+    
+    // Transactions (View, extend, cancel own transactions)
+    Route::get('/transactions', [TransactionController::class, 'index']);
+    Route::get('/transactions/my-loans', [TransactionController::class, 'myLoans']);
+    Route::post('/transactions/{id}/extend', [TransactionController::class, 'extend']);
+    Route::post('/transactions/{id}/cancel', [TransactionController::class, 'cancel']);
+    
+    // Purchase Requests (All staff can view and submit, filtered by permissions in controller)
+    Route::get('/purchase-requests', [PurchaseRequestController::class, 'index']);
+    Route::get('/purchase-requests/{id}', [PurchaseRequestController::class, 'show']);
+    Route::post('/purchase-requests', [PurchaseRequestController::class, 'store']);
+    Route::put('/purchase-requests/{id}', [PurchaseRequestController::class, 'update']);
+    Route::post('/purchase-requests/{id}/cancel', [PurchaseRequestController::class, 'cancel']);
+    Route::delete('/purchase-requests/{id}', [PurchaseRequestController::class, 'destroy']);
+    
+    // Maintenance Requests (All staff can view and submit, complete their assigned tasks)
+    Route::get('/maintenance-requests', [MaintenanceRequestController::class, 'index']);
+    Route::get('/maintenance-requests/{id}', [MaintenanceRequestController::class, 'show']);
+    Route::post('/maintenance-requests', [MaintenanceRequestController::class, 'store']);
+    Route::put('/maintenance-requests/{id}', [MaintenanceRequestController::class, 'update']);
+    Route::post('/maintenance-requests/{id}/complete', [MaintenanceRequestController::class, 'complete']);
+    
+    // Reports (All authenticated users can view reports - SRS FR-5)
+    Route::get('/reports/inventory-summary', [ReportController::class, 'inventorySummary']);
+    Route::get('/reports/transaction-history', [ReportController::class, 'transactionHistory']);
+    Route::get('/reports/overdue-items', [ReportController::class, 'overdueItems']);
+    Route::get('/reports/maintenance-schedule', [ReportController::class, 'maintenanceSchedule']);
+    Route::get('/reports/dashboard-stats', [ReportController::class, 'dashboardStats']);
+    
+    // Notifications (FR-9.2 - In-app notifications)
+    Route::get('/notifications', [NotificationController::class, 'index']);
+    Route::get('/notifications/unread-count', [NotificationController::class, 'unreadCount']);
+    Route::post('/notifications/{id}/read', [NotificationController::class, 'markAsRead']);
+    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead']);
+    Route::delete('/notifications/{id}', [NotificationController::class, 'destroy']);
+    Route::delete('/notifications/read/all', [NotificationController::class, 'deleteAllRead']);
+});
+
+// Chatbot with Access Control and Rate Limiting (AI queries are expensive)
+Route::middleware(['auth:sanctum', 'chatbot.access', 'throttle:ai'])->group(function () {
+    Route::post('/chat', [ChatbotController::class, 'ask']);
+    Route::post('/chat/feedback', [ChatbotController::class, 'submitFeedback']);
+    Route::get('/chat/history', [ChatbotController::class, 'history']);
+});
+
+// Chatbot Analytics (Admin only)
+Route::middleware(['auth:sanctum', 'role:admin', 'throttle:api'])->group(function () {
+    Route::get('/chat/analytics', [ChatbotController::class, 'analytics']);
+    Route::get('/chat/history/all', [ChatbotController::class, 'allHistory']);
+});
+
+// ============================================================================
+// AUTHENTICATED - ADMIN ONLY ROUTES
+// ============================================================================
+Route::middleware(['auth:sanctum', 'role:admin', 'throttle:api'])->group(function () {
+    // User Management (Full CRUD - Admin only)
+    Route::get('/users', [AuthController::class, 'getAllUsers']); // Admin-only: full user list with details
+    Route::post('/users', [AuthController::class, 'createUser']);
+    Route::put('/users/{id}', [AuthController::class, 'updateUser']);
+    Route::delete('/users/{id}', [AuthController::class, 'deleteUser']);
+    
+    // Settings Management
+    Route::get('/system/settings', [SettingsController::class, 'getSettings']);
+    Route::post('/system/settings', [SettingsController::class, 'updateSettings']);
+    
+    // AI Model Management
+    Route::get('/ai/models/list', [\App\Http\Controllers\Admin\AiModelController::class, 'listModels']);
+    Route::get('/ai/models/test', [\App\Http\Controllers\Admin\AiModelController::class, 'testConnection']);
+    Route::get('/ai/models/config', [\App\Http\Controllers\Admin\AiModelController::class, 'getConfig']);
+    Route::post('/ai/models/config', [\App\Http\Controllers\Admin\AiModelController::class, 'updateConfig']);
+    Route::post('/ai/models/refresh', [\App\Http\Controllers\Admin\AiModelController::class, 'refreshModels']);
+    
+    // AI Performance Metrics (NFR-1.2 & NFR-1.3)
+    Route::get('/ai/metrics', [\App\Http\Controllers\Admin\AiMetricsController::class, 'index']);
+    Route::get('/ai/metrics/health', [\App\Http\Controllers\Admin\AiMetricsController::class, 'health']);
+    
+    // Backup Management
+    Route::get('/system/backups', [SettingsController::class, 'getBackups']);
+    Route::post('/system/backups', [SettingsController::class, 'createBackup']);
+    Route::delete('/system/backups/{id}', [SettingsController::class, 'deleteBackup']);
+    
+    // Audit Logs (Admin only)
+    Route::get('/system/audit-logs', [SettingsController::class, 'getAuditLogs']);
+    
+    // Translation Management (Admin only)
+    Route::put('/translations', [\App\Http\Controllers\API\TranslationController::class, 'update']);
+    Route::post('/translations/bulk', [\App\Http\Controllers\API\TranslationController::class, 'bulkUpdate']);
+    Route::delete('/translations/{id}', [\App\Http\Controllers\API\TranslationController::class, 'destroy']);
+    Route::post('/translations/cache/clear', [\App\Http\Controllers\API\TranslationController::class, 'clearCache']);
+});
+
+// ============================================================================
+// PUBLIC TRANSLATION ROUTES - Available to all authenticated users
+// ============================================================================
+Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
+    Route::get('/translations', [\App\Http\Controllers\API\TranslationController::class, 'index']);
+    Route::get('/translations/{locale}/{namespace}', [\App\Http\Controllers\API\TranslationController::class, 'byNamespace']);
+});

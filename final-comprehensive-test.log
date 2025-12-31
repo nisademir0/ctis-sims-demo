@@ -1,0 +1,182 @@
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/auth.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('FR-1: Authentication & User Management', () => {
+     |      ^
+  11 |   
+  12 |   test.beforeEach(async ({ page }) => {
+  13 |     await page.goto('/login');
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/auth.spec.js:10:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/chatbot.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('FR-8: AI Chatbot', () => {
+     |      ^
+  11 |   
+  12 |   test('FR-8.1: User can access chatbot interface', async ({ authenticatedPage: page }) => {
+  13 |     const helper = new TestHelpers(page);
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/chatbot.spec.js:10:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/inventory.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('FR-2: Inventory Management', () => {
+     |      ^
+  11 |   
+  12 |   test.beforeEach(async ({ authenticatedPage: page }) => {
+  13 |     const helper = new TestHelpers(page);
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/inventory.spec.js:10:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/maintenance.spec.js:9
+
+   7 | const tracker = new TestResultTracker();
+   8 |
+>  9 | test.describe('FR-4: Maintenance Management', () => {
+     |      ^
+  10 |   
+  11 |   test('FR-4.1-4.8: Maintenance features accessible', async ({ authenticatedPage: page }) => {
+  12 |     const helper = new TestHelpers(page);
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/maintenance.spec.js:9:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/nfr.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('NFR: Non-Functional Requirements', () => {
+     |      ^
+  11 |   
+  12 |   test('NFR-1: Dark mode toggle works', async ({ authenticatedPage: page }) => {
+  13 |     const helper = new TestHelpers(page);
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/nfr.spec.js:10:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/notifications.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('FR-7: Notifications', () => {
+     |      ^
+  11 |   
+  12 |   test('FR-7.1: Notification bell visible', async ({ authenticatedPage: page }) => {
+  13 |     const helper = new TestHelpers(page);
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/notifications.spec.js:10:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/purchase.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('FR-5: Purchase Requests', () => {
+     |      ^
+  11 |   
+  12 |   test('FR-5.1: User can view purchase requests page', async ({ authenticatedPage: page }) => {
+  13 |     const helper = new TestHelpers(page);
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/purchase.spec.js:10:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/reports.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('FR-6: Reporting', () => {
+     |      ^
+  11 |   
+  12 |   test('FR-6.1: Reports page accessible', async ({ authenticatedPage: page }) => {
+  13 |     const helper = new TestHelpers(page);
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/reports.spec.js:10:6)
+Error: Playwright Test did not expect test.describe() to be called here.
+Most common reasons include:
+- You are calling test.describe() in a configuration file.
+- You are calling test.describe() in a file that is imported by the configuration file.
+- You have two different versions of @playwright/test. This usually happens
+  when one of the dependencies in your package.json depends on @playwright/test.
+
+   at tests/e2e/tests/transactions.spec.js:10
+
+   8 | const tracker = new TestResultTracker();
+   9 |
+> 10 | test.describe('FR-3: Transaction Management', () => {
+     |      ^
+  11 |   
+  12 |   test('FR-3.1: User can access transaction checkout', async ({ page, loginAs }) => {
+  13 |     await loginAs('inventoryManager');
+    at TestTypeImpl._currentSuite (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:75:13)
+    at TestTypeImpl._describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/common/testType.js:115:24)
+    at Function.describe (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/node_modules/playwright/lib/transform/transform.js:275:12)
+    at Object.<anonymous> (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/transactions.spec.js:10:6)
+Error: No tests found
+

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Persistence Test</title>
+</head>
+<body>
+    <h1>Testing localStorage</h1>
+    <button onclick="setTheme()">Set Dark Theme</button>
+    <button onclick="setLanguage()">Set English</button>
+    <button onclick="checkStorage()">Check Storage</button>
+    <pre id="output"></pre>
+    
+    <script>
+        function setTheme() {
+            localStorage.setItem('theme', 'dark');
+            document.getElementById('output').textContent = 'Set theme=dark';
+        }
+        
+        function setLanguage() {
+            localStorage.setItem('language', 'en');
+            document.getElementById('output').textContent = 'Set language=en';
+        }
+        
+        function checkStorage() {
+            const theme = localStorage.getItem('theme');
+            const language = localStorage.getItem('language');
+            document.getElementById('output').textContent = 
+                'Theme: ' + theme + '\nLanguage: ' + language;
+        }
+        
+        // Check on load
+        window.onload = checkStorage;
+    </script>
+</body>
+</html>

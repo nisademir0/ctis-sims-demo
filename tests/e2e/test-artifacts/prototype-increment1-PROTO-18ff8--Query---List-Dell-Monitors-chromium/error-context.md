@@ -1,0 +1,123 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - generic [ref=e5]:
+    - generic [ref=e7]:
+      - img [ref=e8]
+      - generic [ref=e10]: CTIS SIMS
+    - navigation [ref=e11]:
+      - link "Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e14]:
+          - img [ref=e15]
+          - text: Dashboard
+      - link "Envanter" [ref=e18] [cursor=pointer]:
+        - /url: /inventory
+        - generic [ref=e19]:
+          - img [ref=e20]
+          - text: Envanter
+      - link "Hareketler" [ref=e23] [cursor=pointer]:
+        - /url: /transactions
+        - generic [ref=e24]:
+          - img [ref=e25]
+          - text: Hareketler
+        - img [ref=e27]
+      - link "Bakım" [ref=e30] [cursor=pointer]:
+        - /url: /maintenance-requests
+        - generic [ref=e31]:
+          - img [ref=e32]
+          - text: Bakım
+      - link "Satın Alma" [ref=e35] [cursor=pointer]:
+        - /url: /purchase-requests
+        - generic [ref=e36]:
+          - img [ref=e37]
+          - text: Satın Alma
+      - link "AI Asistan" [ref=e40] [cursor=pointer]:
+        - /url: /chatbot
+        - generic [ref=e41]:
+          - img [ref=e42]
+          - text: AI Asistan
+        - img [ref=e44]
+      - link "Raporlar" [ref=e47] [cursor=pointer]:
+        - /url: /reports
+        - generic [ref=e48]:
+          - img [ref=e49]
+          - text: Raporlar
+        - img [ref=e51]
+    - generic [ref=e54]:
+      - generic [ref=e56]: S
+      - generic [ref=e57]:
+        - paragraph [ref=e58]: Serkan Genç
+        - paragraph [ref=e59]: serkan@ctis.edu.tr
+  - generic [ref=e60]:
+    - generic [ref=e64]:
+      - button "theme.dark" [ref=e65] [cursor=pointer]:
+        - img [ref=e66]
+      - button "View notifications 1" [ref=e69] [cursor=pointer]:
+        - generic [ref=e70]: View notifications
+        - img [ref=e71]
+        - generic [ref=e73]: "1"
+      - button "TR" [ref=e75] [cursor=pointer]
+      - button "Open user menu S Serkan Genç Inventory Manager" [ref=e77] [cursor=pointer]:
+        - generic [ref=e78]: Open user menu
+        - generic [ref=e79]: S
+        - generic [ref=e80]:
+          - paragraph [ref=e81]: Serkan Genç
+          - paragraph [ref=e82]: Inventory Manager
+    - main [ref=e83]:
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - heading "AI Asistan" [level=1] [ref=e89]:
+              - img [ref=e90]
+              - text: AI Asistan
+            - paragraph [ref=e92]: Envanter yönetimi, işlemler ve sistem hakkında sorularınızı sorun.
+          - button "Geçmişi Temizle" [ref=e93] [cursor=pointer]
+        - generic [ref=e95]:
+          - generic [ref=e96]:
+            - generic [ref=e98]:
+              - generic [ref=e100]:
+                - img [ref=e102]
+                - generic [ref=e104]: AI Asistan
+              - generic [ref=e107]:
+                - text: Merhaba
+                - strong [ref=e108]: Serkan Genç
+                - text: "! 👋"
+                - text: "CTIS Envanter Yönetim Sistemi asistanıyım. Size aşağıdaki konularda yardımcı olabilirim:"
+                - generic [ref=e109]:
+                  - generic [ref=e110]: •
+                  - generic [ref=e111]: Envanter durumu sorguları
+                - generic [ref=e112]:
+                  - generic [ref=e113]: •
+                  - generic [ref=e114]: Ödünç işlemleri
+                - generic [ref=e115]:
+                  - generic [ref=e116]: •
+                  - generic [ref=e117]: Bakım talepleri
+                - generic [ref=e118]:
+                  - generic [ref=e119]: •
+                  - generic [ref=e120]: İstatistiksel analizler
+                - text: Size nasıl yardımcı olabilirim?
+              - generic [ref=e123]:
+                - img [ref=e124]
+                - text: 22:29
+            - generic [ref=e127]:
+              - paragraph [ref=e128]: Tüm Dell monitörleri listele
+              - paragraph [ref=e129]:
+                - img [ref=e130]
+                - text: 22:29
+          - generic [ref=e132]:
+            - generic [ref=e133]:
+              - generic [ref=e134]: ⚠️
+              - generic [ref=e135]:
+                - paragraph [ref=e136]: Çok fazla sorgu gönderdiniz
+                - paragraph [ref=e137]: Lütfen birkaç dakika bekleyin ve tekrar deneyin.
+            - generic [ref=e138]:
+              - 'textbox "Sorunuzu buraya yazın... (örn: Kaç adet masa var?)" [disabled] [ref=e139]'
+              - button "Gönder" [disabled] [ref=e140]:
+                - img [ref=e141]
+                - generic [ref=e143]: Gönder
+            - generic [ref=e144]:
+              - generic [ref=e145]: 💡
+              - paragraph [ref=e146]: "İpucu: Envanter durumu, ödünç işlemleri, bakım talepleri ve sistem kullanımı hakkında detaylı sorular sorabilirsiniz. Sohbet geçmişiniz 24 saat boyunca saklanır."
+```

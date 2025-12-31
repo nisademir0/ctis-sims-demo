@@ -1,0 +1,787 @@
+
+Running 56 tests using 2 workers
+
+  ✓   1 [chromium] › tests/auth.spec.js:16:7 › FR-1: Authentication & User Management › FR-1.1: User can login with valid credentials (2.8s)
+  ✓   2 [chromium] › tests/auth.spec.js:97:7 › FR-1: Authentication & User Management › FR-1.8: View profile (3.5s)
+  ✓   3 [chromium] › tests/auth.spec.js:32:7 › FR-1: Authentication & User Management › FR-1.1: User cannot login with invalid credentials (2.5s)
+  ✓   4 [chromium] › tests/auth.spec.js:107:7 › FR-1: Authentication & User Management › FR-1.9: Update profile (1.9s)
+  ✓   5 [chromium] › tests/auth.spec.js:48:7 › FR-1: Authentication & User Management › FR-1.1: Login form has required fields (459ms)
+  ✓   7 [chromium] › tests/auth.spec.js:58:7 › FR-1: Authentication & User Management › FR-1.2: Admin can access admin routes (1.8s)
+  ✓   6 [chromium] › tests/auth.spec.js:122:7 › FR-1: Authentication & User Management › FR-1.10: Change password form accessible (2.6s)
+  ✓   9 [chromium] › tests/auth.spec.js:134:7 › FR-1: Authentication & User Management › FR-1.11: Avatar upload section present (2.3s)
+  ✓   8 [chromium] › tests/auth.spec.js:69:7 › FR-1: Authentication & User Management › FR-1.2: Staff cannot access admin routes (4.0s)
+  ✓  11 [chromium] › tests/auth.spec.js:82:7 › FR-1: Authentication & User Management › FR-1.6: Password reset request (2.5s)
+  ✘  10 [chromium] › tests/auth.spec.js:146:7 › FR-1: Authentication & User Management › FR-1.13: Logout works (11.5s)
+  ✘  12 [chromium] › tests/chatbot.spec.js:12:7 › FR-8: AI Chatbot › FR-8.1: User can access chatbot interface (10.4s)
+  ✘  13 [chromium] › tests/chatbot.spec.js:46:7 › FR-8: AI Chatbot › FR-8.3: Chatbot generates SQL queries (10.4s)
+  ✘  14 [chromium] › tests/chatbot.spec.js:28:7 › FR-8: AI Chatbot › FR-8.2: User can ask natural language questions (10.4s)
+  ✘  15 [chromium] › tests/chatbot.spec.js:61:7 › FR-8: AI Chatbot › FR-8.4: Chatbot displays results in tables (10.6s)
+  ✘  16 [chromium] › tests/inventory.spec.js:17:7 › FR-2: Inventory Management › FR-2.1: User can view inventory list (10.5s)
+  ✓  17 [chromium] › tests/inventory.spec.js:99:7 › FR-2: Inventory Management › FR-2.6: Admin can edit item (5.3s)
+  ✓  19 [chromium] › tests/inventory.spec.js:117:7 › FR-2: Inventory Management › FR-2.7: Admin can delete item (3.3s)
+  ✓  20 [chromium] › tests/inventory.spec.js:132:7 › FR-2: Inventory Management › FR-2.8: User can view item details (2.3s)
+  ✓  21 [chromium] › tests/inventory.spec.js:149:7 › FR-2: Inventory Management › FR-2.9: User can see item location (2.3s)
+  ✓  22 [chromium] › tests/inventory.spec.js:162:7 › FR-2: Inventory Management › FR-2.10: User can view and download QR code (2.3s)
+  ✘  18 [chromium] › tests/inventory.spec.js:29:7 › FR-2: Inventory Management › FR-2.2: User can search inventory (13.7s)
+  ✓  23 [chromium] › tests/maintenance.spec.js:11:7 › FR-4: Maintenance Management › FR-4.1-4.8: Maintenance features accessible (1.8s)
+  ✓  24 [chromium] › tests/inventory.spec.js:42:7 › FR-2: Inventory Management › FR-2.3: User can filter by category (2.5s)
+  ✘  25 [chromium] › tests/nfr.spec.js:12:7 › NFR: Non-Functional Requirements › NFR-1: Dark mode toggle works (10.4s)
+  ✘  26 [chromium] › tests/inventory.spec.js:58:7 › FR-2: Inventory Management › FR-2.4: User can filter by status (10.4s)
+  ✘  27 [chromium] › tests/nfr.spec.js:32:7 › NFR: Non-Functional Requirements › NFR-2: All pages are in Turkish (10.4s)
+  ✘  28 [chromium] › tests/inventory.spec.js:81:7 › FR-2: Inventory Management › FR-2.5: Admin can add new item (10.5s)
+  ✘  30 [chromium] › tests/nfr.spec.js:71:7 › NFR: Non-Functional Requirements › NFR-4: Page load time is acceptable (10.5s)
+  ✘  29 [chromium] › tests/nfr.spec.js:50:7 › NFR: Non-Functional Requirements › NFR-3: Mobile responsive design works (15.1s)
+  ✘  31 [chromium] › tests/nfr.spec.js:87:7 › NFR: Non-Functional Requirements › NFR-5: Accessibility features present (10.5s)
+  ✘  32 [chromium] › tests/notifications.spec.js:12:7 › FR-7: Notifications › FR-7.1: Notification bell visible (10.5s)
+  ✓  33 [chromium] › tests/notifications.spec.js:37:7 › FR-7: Notifications › FR-7.3: Notification list displayed (2.5s)
+  ✓  35 [chromium] › tests/notifications.spec.js:49:7 › FR-7: Notifications › FR-7.4: Notification actions available (3.2s)
+  ✓  34 [chromium] › tests/notifications.spec.js:25:7 › FR-7: Notifications › FR-7.2: Notifications page accessible (3.3s)
+  ✓  36 [chromium] › tests/purchase.spec.js:12:7 › FR-5: Purchase Requests › FR-5.1: User can view purchase requests page (2.3s)
+  ✓  37 [chromium] › tests/purchase.spec.js:48:7 › FR-5: Purchase Requests › FR-5.4: Manager access (2.9s)
+  ✓  38 [chromium] › tests/purchase.spec.js:24:7 › FR-5: Purchase Requests › FR-5.2: Create button exists (1.8s)
+  ✓  39 [chromium] › tests/purchase.spec.js:61:7 › FR-5: Purchase Requests › FR-5.5: Details view accessible (2.0s)
+  ✓  40 [chromium] › tests/purchase.spec.js:36:7 › FR-5: Purchase Requests › FR-5.3: Purchase list displayed (1.8s)
+  ✓  41 [chromium] › tests/purchase.spec.js:77:7 › FR-5: Purchase Requests › FR-5.6: Search present (1.8s)
+  ✓  42 [chromium] › tests/reports.spec.js:12:7 › FR-6: Reporting › FR-6.1: Reports page accessible (1.8s)
+  ✘  43 [chromium] › tests/reports.spec.js:61:7 › FR-6: Reporting › FR-6.5: Maintenance report accessible (10.4s)
+  ✘  44 [chromium] › tests/reports.spec.js:24:7 › FR-6: Reporting › FR-6.2: Report types available (10.4s)
+  ✘  45 [chromium] › tests/reports.spec.js:73:7 › FR-6: Reporting › FR-6.6: Date filters present (10.4s)
+  ✘  46 [chromium] › tests/reports.spec.js:37:7 › FR-6: Reporting › FR-6.3: Inventory report accessible (10.5s)
+  ✘  47 [chromium] › tests/reports.spec.js:85:7 › FR-6: Reporting › FR-6.7: Export functionality present (10.5s)
+  ✘  48 [chromium] › tests/reports.spec.js:49:7 › FR-6: Reporting › FR-6.4: Transaction report accessible (10.5s)
+  ✘  49 [chromium] › tests/transactions.spec.js:12:7 › FR-3: Transaction Management › FR-3.1: User can access transaction checkout (10.6s)
+  ✘  50 [chromium] › tests/transactions.spec.js:56:7 › FR-3: Transaction Management › FR-3.5: System calculates late fees (10.5s)
+  ✘  51 [chromium] › tests/transactions.spec.js:23:7 › FR-3: Transaction Management › FR-3.2: User can view transactions (10.5s)
+  ✘  52 [chromium] › tests/transactions.spec.js:66:7 › FR-3: Transaction Management › FR-3.6: User can search transactions (10.5s)
+  ✓  53 [chromium] › tests/transactions.spec.js:34:7 › FR-3: Transaction Management › FR-3.3: User can view transaction history (3.3s)
+  ✓  54 [chromium] › tests/transactions.spec.js:78:7 › FR-3: Transaction Management › FR-3.7: User can filter by status (3.1s)
+  ✓  55 [chromium] › tests/transactions.spec.js:46:7 › FR-3: Transaction Management › FR-3.4: System detects overdue items (2.5s)
+  ✓  56 [chromium] › tests/transactions.spec.js:90:7 › FR-3: Transaction Management › FR-3.8: User can export transaction data (1.9s)
+
+
+  1) [chromium] › tests/auth.spec.js:146:7 › FR-1: Authentication & User Management › FR-1.13: Logout works 
+
+    TimeoutError: page.click: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="user-menu-button"]')[22m
+
+
+      148 |     
+      149 |     // Click user menu button to open dropdown
+    > 150 |     await page.click('[data-testid="user-menu-button"]');
+          |                ^
+      151 |     await page.waitForTimeout(500);
+      152 |     
+      153 |     // Click logout button in dropdown menu
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/auth.spec.js:150:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/auth-FR-1-Authentication-U-abbfd-gement-FR-1-13-Logout-works-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/auth-FR-1-Authentication-U-abbfd-gement-FR-1-13-Logout-works-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/auth-FR-1-Authentication-U-abbfd-gement-FR-1-13-Logout-works-chromium/error-context.md
+
+  2) [chromium] › tests/chatbot.spec.js:12:7 › FR-8: AI Chatbot › FR-8.1: User can access chatbot interface 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-0003f-an-access-chatbot-interface-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-0003f-an-access-chatbot-interface-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/chatbot-FR-8-AI-Chatbot-FR-0003f-an-access-chatbot-interface-chromium/error-context.md
+
+  3) [chromium] › tests/chatbot.spec.js:28:7 › FR-8: AI Chatbot › FR-8.2: User can ask natural language questions 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-6d66b--natural-language-questions-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-6d66b--natural-language-questions-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/chatbot-FR-8-AI-Chatbot-FR-6d66b--natural-language-questions-chromium/error-context.md
+
+  4) [chromium] › tests/chatbot.spec.js:46:7 › FR-8: AI Chatbot › FR-8.3: Chatbot generates SQL queries 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:54
+
+      52 |       await page.fill('[data-testid="password-input"]', user.password);
+      53 |       await page.click('[data-testid="login-submit"]');
+    > 54 |       await page.waitForURL('/', { timeout: 10000 });
+         |                  ^
+      55 |       await page.waitForLoadState('networkidle');
+      56 |     };
+      57 |     
+        at loginAs (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:54:18)
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/chatbot.spec.js:47:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-8-3-Chatbot-generates-SQL-queries-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-8-3-Chatbot-generates-SQL-queries-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/chatbot-FR-8-AI-Chatbot-FR-8-3-Chatbot-generates-SQL-queries-chromium/error-context.md
+
+  5) [chromium] › tests/chatbot.spec.js:61:7 › FR-8: AI Chatbot › FR-8.4: Chatbot displays results in tables 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-48d76--displays-results-in-tables-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/chatbot-FR-8-AI-Chatbot-FR-48d76--displays-results-in-tables-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/chatbot-FR-8-AI-Chatbot-FR-48d76--displays-results-in-tables-chromium/error-context.md
+
+  6) [chromium] › tests/inventory.spec.js:17:7 › FR-2: Inventory Management › FR-2.1: User can view inventory list 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-1e901-ser-can-view-inventory-list-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-1e901-ser-can-view-inventory-list-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/inventory-FR-2-Inventory-M-1e901-ser-can-view-inventory-list-chromium/error-context.md
+
+  7) [chromium] › tests/inventory.spec.js:29:7 › FR-2: Inventory Management › FR-2.2: User can search inventory 
+
+    TimeoutError: page.fill: Timeout 10000ms exceeded.
+    Call log:
+    [2m  - waiting for locator('[data-testid="inventory-search"]')[22m
+
+
+      33 |     
+      34 |     // Use the actual search input with test ID
+    > 35 |     await page.fill('[data-testid="inventory-search"]', 'laptop');
+         |                ^
+      36 |     await page.waitForTimeout(500);
+      37 |     
+      38 |     await helper.screenshot('inventory-search');
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/inventory.spec.js:35:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-229d6-2-User-can-search-inventory-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-229d6-2-User-can-search-inventory-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/inventory-FR-2-Inventory-M-229d6-2-User-can-search-inventory-chromium/error-context.md
+
+  8) [chromium] › tests/inventory.spec.js:58:7 › FR-2: Inventory Management › FR-2.4: User can filter by status 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-aa8d8-4-User-can-filter-by-status-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-aa8d8-4-User-can-filter-by-status-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/inventory-FR-2-Inventory-M-aa8d8-4-User-can-filter-by-status-chromium/error-context.md
+
+  9) [chromium] › tests/inventory.spec.js:81:7 › FR-2: Inventory Management › FR-2.5: Admin can add new item 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-40551--2-5-Admin-can-add-new-item-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/inventory-FR-2-Inventory-M-40551--2-5-Admin-can-add-new-item-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/inventory-FR-2-Inventory-M-40551--2-5-Admin-can-add-new-item-chromium/error-context.md
+
+  10) [chromium] › tests/nfr.spec.js:12:7 › NFR: Non-Functional Requirements › NFR-1: Dark mode toggle works 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-64315-FR-1-Dark-mode-toggle-works-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-64315-FR-1-Dark-mode-toggle-works-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/nfr-NFR-Non-Functional-Req-64315-FR-1-Dark-mode-toggle-works-chromium/error-context.md
+
+  11) [chromium] › tests/nfr.spec.js:32:7 › NFR: Non-Functional Requirements › NFR-2: All pages are in Turkish 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-85b82--2-All-pages-are-in-Turkish-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-85b82--2-All-pages-are-in-Turkish-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/nfr-NFR-Non-Functional-Req-85b82--2-All-pages-are-in-Turkish-chromium/error-context.md
+
+  12) [chromium] › tests/nfr.spec.js:50:7 › NFR: Non-Functional Requirements › NFR-3: Mobile responsive design works 
+
+    [31mTest timeout of 15000ms exceeded.[39m
+
+    Error: page.waitForURL: Test timeout of 15000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/dashboard" until "load"
+    ============================================================
+
+      60 |     await page.click('button[type="submit"]');
+      61 |     
+    > 62 |     await page.waitForURL('/dashboard');
+         |                ^
+      63 |     
+      64 |     // Check mobile menu
+      65 |     await expect(page.locator('[data-testid="mobile-menu-button"]')).toBeVisible();
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/nfr.spec.js:62:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-92c2f-ile-responsive-design-works-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-92c2f-ile-responsive-design-works-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/nfr-NFR-Non-Functional-Req-92c2f-ile-responsive-design-works-chromium/error-context.md
+
+  13) [chromium] › tests/nfr.spec.js:71:7 › NFR: Non-Functional Requirements › NFR-4: Page load time is acceptable 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-34347-age-load-time-is-acceptable-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-34347-age-load-time-is-acceptable-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/nfr-NFR-Non-Functional-Req-34347-age-load-time-is-acceptable-chromium/error-context.md
+
+  14) [chromium] › tests/nfr.spec.js:87:7 › NFR: Non-Functional Requirements › NFR-5: Accessibility features present 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-70674-essibility-features-present-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/nfr-NFR-Non-Functional-Req-70674-essibility-features-present-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/nfr-NFR-Non-Functional-Req-70674-essibility-features-present-chromium/error-context.md
+
+  15) [chromium] › tests/notifications.spec.js:12:7 › FR-7: Notifications › FR-7.1: Notification bell visible 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/notifications-FR-7-Notific-09571-1-Notification-bell-visible-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/notifications-FR-7-Notific-09571-1-Notification-bell-visible-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/notifications-FR-7-Notific-09571-1-Notification-bell-visible-chromium/error-context.md
+
+  16) [chromium] › tests/reports.spec.js:24:7 › FR-6: Reporting › FR-6.2: Report types available ───
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-2-Report-types-available-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-2-Report-types-available-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reports-FR-6-Reporting-FR-6-2-Report-types-available-chromium/error-context.md
+
+  17) [chromium] › tests/reports.spec.js:37:7 › FR-6: Reporting › FR-6.3: Inventory report accessible 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-3-Inventory-report-accessible-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-3-Inventory-report-accessible-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reports-FR-6-Reporting-FR-6-3-Inventory-report-accessible-chromium/error-context.md
+
+  18) [chromium] › tests/reports.spec.js:49:7 › FR-6: Reporting › FR-6.4: Transaction report accessible 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-4-Transaction-report-accessible-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-4-Transaction-report-accessible-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reports-FR-6-Reporting-FR-6-4-Transaction-report-accessible-chromium/error-context.md
+
+  19) [chromium] › tests/reports.spec.js:61:7 › FR-6: Reporting › FR-6.5: Maintenance report accessible 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-5-Maintenance-report-accessible-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-5-Maintenance-report-accessible-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reports-FR-6-Reporting-FR-6-5-Maintenance-report-accessible-chromium/error-context.md
+
+  20) [chromium] › tests/reports.spec.js:73:7 › FR-6: Reporting › FR-6.6: Date filters present ─────
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-6-Date-filters-present-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-6-Date-filters-present-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reports-FR-6-Reporting-FR-6-6-Date-filters-present-chromium/error-context.md
+
+  21) [chromium] › tests/reports.spec.js:85:7 › FR-6: Reporting › FR-6.7: Export functionality present 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-7-Export-functionality-present-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/reports-FR-6-Reporting-FR-6-7-Export-functionality-present-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/reports-FR-6-Reporting-FR-6-7-Export-functionality-present-chromium/error-context.md
+
+  22) [chromium] › tests/transactions.spec.js:12:7 › FR-3: Transaction Management › FR-3.1: User can access transaction checkout 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:54
+
+      52 |       await page.fill('[data-testid="password-input"]', user.password);
+      53 |       await page.click('[data-testid="login-submit"]');
+    > 54 |       await page.waitForURL('/', { timeout: 10000 });
+         |                  ^
+      55 |       await page.waitForLoadState('networkidle');
+      56 |     };
+      57 |     
+        at loginAs (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:54:18)
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/transactions.spec.js:13:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-0cda1-access-transaction-checkout-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-0cda1-access-transaction-checkout-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/transactions-FR-3-Transact-0cda1-access-transaction-checkout-chromium/error-context.md
+
+  23) [chromium] › tests/transactions.spec.js:23:7 › FR-3: Transaction Management › FR-3.2: User can view transactions 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:54
+
+      52 |       await page.fill('[data-testid="password-input"]', user.password);
+      53 |       await page.click('[data-testid="login-submit"]');
+    > 54 |       await page.waitForURL('/', { timeout: 10000 });
+         |                  ^
+      55 |       await page.waitForLoadState('networkidle');
+      56 |     };
+      57 |     
+        at loginAs (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:54:18)
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/transactions.spec.js:24:5
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-8d361--User-can-view-transactions-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-8d361--User-can-view-transactions-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/transactions-FR-3-Transact-8d361--User-can-view-transactions-chromium/error-context.md
+
+  24) [chromium] › tests/transactions.spec.js:56:7 › FR-3: Transaction Management › FR-3.5: System calculates late fees 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-62b11-System-calculates-late-fees-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-62b11-System-calculates-late-fees-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/transactions-FR-3-Transact-62b11-System-calculates-late-fees-chromium/error-context.md
+
+  25) [chromium] › tests/transactions.spec.js:66:7 › FR-3: Transaction Management › FR-3.6: User can search transactions 
+
+    TimeoutError: page.waitForURL: Timeout 10000ms exceeded.
+    =========================== logs ===========================
+    waiting for navigation to "/" until "load"
+    ============================================================
+
+       at ../fixtures/test-helpers.js:40
+
+      38 |     
+      39 |     // Wait for successful login - dashboard is at root /
+    > 40 |     await page.waitForURL('/', { timeout: 10000 });
+         |                ^
+      41 |     await page.waitForLoadState('networkidle');
+      42 |     
+      43 |     await use(page);
+        at Object.authenticatedPage (/Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/fixtures/test-helpers.js:40:16)
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-67d06-ser-can-search-transactions-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/transactions-FR-3-Transact-67d06-ser-can-search-transactions-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/transactions-FR-3-Transact-67d06-ser-can-search-transactions-chromium/error-context.md
+
+  25 failed
+    [chromium] › tests/auth.spec.js:146:7 › FR-1: Authentication & User Management › FR-1.13: Logout works 
+    [chromium] › tests/chatbot.spec.js:12:7 › FR-8: AI Chatbot › FR-8.1: User can access chatbot interface 
+    [chromium] › tests/chatbot.spec.js:28:7 › FR-8: AI Chatbot › FR-8.2: User can ask natural language questions 
+    [chromium] › tests/chatbot.spec.js:46:7 › FR-8: AI Chatbot › FR-8.3: Chatbot generates SQL queries 
+    [chromium] › tests/chatbot.spec.js:61:7 › FR-8: AI Chatbot › FR-8.4: Chatbot displays results in tables 
+    [chromium] › tests/inventory.spec.js:17:7 › FR-2: Inventory Management › FR-2.1: User can view inventory list 
+    [chromium] › tests/inventory.spec.js:29:7 › FR-2: Inventory Management › FR-2.2: User can search inventory 
+    [chromium] › tests/inventory.spec.js:58:7 › FR-2: Inventory Management › FR-2.4: User can filter by status 
+    [chromium] › tests/inventory.spec.js:81:7 › FR-2: Inventory Management › FR-2.5: Admin can add new item 
+    [chromium] › tests/nfr.spec.js:12:7 › NFR: Non-Functional Requirements › NFR-1: Dark mode toggle works 
+    [chromium] › tests/nfr.spec.js:32:7 › NFR: Non-Functional Requirements › NFR-2: All pages are in Turkish 
+    [chromium] › tests/nfr.spec.js:50:7 › NFR: Non-Functional Requirements › NFR-3: Mobile responsive design works 
+    [chromium] › tests/nfr.spec.js:71:7 › NFR: Non-Functional Requirements › NFR-4: Page load time is acceptable 
+    [chromium] › tests/nfr.spec.js:87:7 › NFR: Non-Functional Requirements › NFR-5: Accessibility features present 
+    [chromium] › tests/notifications.spec.js:12:7 › FR-7: Notifications › FR-7.1: Notification bell visible 
+    [chromium] › tests/reports.spec.js:24:7 › FR-6: Reporting › FR-6.2: Report types available ─────
+    [chromium] › tests/reports.spec.js:37:7 › FR-6: Reporting › FR-6.3: Inventory report accessible 
+    [chromium] › tests/reports.spec.js:49:7 › FR-6: Reporting › FR-6.4: Transaction report accessible 
+    [chromium] › tests/reports.spec.js:61:7 › FR-6: Reporting › FR-6.5: Maintenance report accessible 
+    [chromium] › tests/reports.spec.js:73:7 › FR-6: Reporting › FR-6.6: Date filters present ───────
+    [chromium] › tests/reports.spec.js:85:7 › FR-6: Reporting › FR-6.7: Export functionality present 
+    [chromium] › tests/transactions.spec.js:12:7 › FR-3: Transaction Management › FR-3.1: User can access transaction checkout 
+    [chromium] › tests/transactions.spec.js:23:7 › FR-3: Transaction Management › FR-3.2: User can view transactions 
+    [chromium] › tests/transactions.spec.js:56:7 › FR-3: Transaction Management › FR-3.5: System calculates late fees 
+    [chromium] › tests/transactions.spec.js:66:7 › FR-3: Transaction Management › FR-3.6: User can search transactions 
+  31 passed (3.0m)

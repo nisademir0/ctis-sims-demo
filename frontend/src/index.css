@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Theme Styles - Centralized Dark Mode Support */
+@layer base {
+  /* Root element - applies to entire app */
+  :root {
+    /* Light mode colors */
+    --color-bg-primary: 249 250 251; /* gray-50 */
+    --color-bg-secondary: 255 255 255; /* white */
+    --color-bg-tertiary: 243 244 246; /* gray-100 */
+    --color-text-primary: 17 24 39; /* gray-900 */
+    --color-text-secondary: 107 114 128; /* gray-500 */
+    --color-border: 229 231 235; /* gray-200 */
+    
+    /* Toast colors for light mode */
+    --toast-bg: 255 255 255; /* white */
+    --toast-text: 55 65 81; /* gray-700 */
+    --toast-icon-bg: 255 255 255; /* white */
+  }
+
+  .dark {
+    /* Dark mode colors */
+    --color-bg-primary: 17 24 39; /* gray-900 */
+    --color-bg-secondary: 31 41 55; /* gray-800 */
+    --color-bg-tertiary: 55 65 81; /* gray-700 */
+    --color-text-primary: 243 244 246; /* gray-100 */
+    --color-text-secondary: 156 163 175; /* gray-400 */
+    --color-border: 75 85 99; /* gray-600 */
+    
+    /* Toast colors for dark mode */
+    --toast-bg: 31 41 55; /* gray-800 */
+    --toast-text: 229 231 235; /* gray-200 */
+    --toast-icon-bg: 31 41 55; /* gray-800 */
+  }
+
+  /* Apply theme colors to body */
+  body {
+    @apply bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Main app container */
+  #root {
+    @apply min-h-screen bg-gray-50 dark:bg-gray-900;
+  }
+}
+
+/* Component base styles with dark mode support */
+@layer components {
+  /* Card component base */
+  .card-base {
+    @apply bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-sm;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Input component base */
+  .input-base {
+    @apply bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100;
+    @apply placeholder:text-gray-400 dark:placeholder:text-gray-500;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Button component base */
+  .button-base {
+    @apply transition-colors duration-200;
+  }
+
+  /* Modal backdrop */
+  .modal-backdrop {
+    @apply bg-gray-500/75 dark:bg-gray-900/80;
+    transition: background-color 0.2s ease;
+  }
+
+  /* Table base */
+  .table-base {
+    @apply bg-white dark:bg-gray-800;
+    transition: background-color 0.2s ease;
+  }
+
+  .table-row {
+    @apply border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700/50;
+    transition: background-color 0.15s ease;
+  }
+
+  .table-header {
+    @apply bg-gray-50 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300;
+    transition: background-color 0.2s ease;
+  }
+
+  /* Dropdown/Select base */
+  .select-base {
+    @apply bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Text area base */
+  .textarea-base {
+    @apply bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100;
+    @apply placeholder:text-gray-400 dark:placeholder:text-gray-500;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Label base */
+  .label-base {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  /* Heading base */
+  .heading-primary {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  .heading-secondary {
+    @apply text-gray-700 dark:text-gray-300;
+  }
+
+  /* Description text */
+  .text-description {
+    @apply text-gray-500 dark:text-gray-400;
+  }
+
+  /* Link base */
+  .link-base {
+    @apply text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300;
+    transition: color 0.15s ease;
+  }
+
+  /* Badge base */
+  .badge-base {
+    @apply bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  /* Empty state */
+  .empty-state {
+    @apply text-gray-400 dark:text-gray-500;
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent;
+  }
+}
+
+/* Utility classes for common theme patterns */
+@layer utilities {
+  .text-primary {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  .text-secondary {
+    @apply text-gray-600 dark:text-gray-400;
+  }
+
+  .text-tertiary {
+    @apply text-gray-500 dark:text-gray-500;
+  }
+
+  .bg-primary {
+    @apply bg-white dark:bg-gray-800;
+  }
+
+  .bg-secondary {
+    @apply bg-gray-50 dark:bg-gray-900;
+  }
+
+  .bg-tertiary {
+    @apply bg-gray-100 dark:bg-gray-700;
+  }
+
+  .border-primary {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+
+  .border-secondary {
+    @apply border-gray-300 dark:border-gray-600;
+  }
+}
+
+/* Smooth transitions for theme switching */
+* {
+  @apply transition-colors duration-200;
+}

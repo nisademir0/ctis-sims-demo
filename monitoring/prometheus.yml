@@ -1,0 +1,102 @@
+# =====================================================
+# CTIS-SIMS: Prometheus Monitoring Configuration
+# =====================================================
+
+global:
+  scrape_interval: 15s  # Scrape targets every 15 seconds
+  evaluation_interval: 15s  # Evaluate rules every 15 seconds
+  external_labels:
+    cluster: 'ctis-sims-production'
+    environment: 'production'
+
+# Alertmanager configuration (optional - for alerting)
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+          # - 'alertmanager:9093'
+
+# Load rules once and periodically evaluate them
+rule_files:
+  # - "alerts.yml"
+
+# Scrape configurations
+scrape_configs:
+  # ========================================
+  # AI Service Metrics
+  # ========================================
+  - job_name: 'ai-service'
+    static_configs:
+      - targets: ['ai-service:8002']  # Metrics endpoint
+    metrics_path: '/metrics'
+    scrape_interval: 10s  # More frequent for critical service
+    
+  # ========================================
+  # Laravel Backend Metrics
+  # ========================================
+  - job_name: 'backend'
+    static_configs:
+      - targets: ['backend:8000']
+    metrics_path: '/metrics'  # Requires Laravel prometheus exporter
+    scrape_interval: 15s
+    
+  # ========================================
+  # MySQL Database Metrics
+  # ========================================
+  - job_name: 'mysql'
+    static_configs:
+      - targets: ['db:9104']  # Requires mysqld_exporter
+    scrape_interval: 30s
+    
+  # ========================================
+  # Redis Metrics
+  # ========================================
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:9121']  # Requires redis_exporter
+    scrape_interval: 30s
+    
+  # ========================================
+  # Docker Container Metrics
+  # ========================================
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+    scrape_interval: 30s
+    
+  # ========================================
+  # Node/System Metrics
+  # ========================================
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+
+# =====================================================
+# KEY METRICS TO MONITOR
+# =====================================================
+#
+# AI Service:
+# - ctis_ai_queries_total{status="success|error"}
+# - ctis_ai_query_duration_seconds
+# - ctis_sql_validation_failures_total
+# - ctis_prompt_injection_blocked_total
+#
+# Laravel:
+# - http_requests_total{method, path, status}
+# - http_request_duration_seconds
+# - queue_jobs_total{queue, status}
+# - db_query_duration_seconds
+#
+# MySQL:
+# - mysql_global_status_connections
+# - mysql_global_status_queries
+# - mysql_global_status_slow_queries
+# - mysql_global_variables_max_connections
+#
+# Redis:
+# - redis_connected_clients
+# - redis_used_memory_bytes
+# - redis_commands_processed_total
+#
+# =====================================================

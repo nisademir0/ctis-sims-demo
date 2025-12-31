@@ -1,0 +1,477 @@
+<testsuites id="" name="" tests="19" failures="4" skipped="0" errors="0" time="285.21192099999996">
+<testsuite name="prototype-increment1.spec.js" timestamp="2025-12-12T19:28:30.858Z" hostname="chromium" tests="19" failures="4" skipped="0" time="278.96" errors="0">
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 1: Role-Based Auth &amp; Navigation (UC9) › 1.1: Manager Login → Inventory Dashboard with &quot;Add Item&quot; Button" classname="prototype-increment1.spec.js" time="3.549">
+<system-out>
+<![CDATA[Table columns: [
+  [32m'Envanter No'[39m,
+  [32m'Eşya Adı'[39m,
+  [32m'Durum'[39m,
+  [32m'Kondisyon'[39m,
+  [32m'Konum'[39m,
+  [32m'Zimmetli Kişi'[39m,
+  [32m'Değer'[39m,
+  [32m'İşlemler'[39m
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 1: Role-Based Auth &amp; Navigation (UC9) › 1.2: Staff Login → My Account Page WITHOUT &quot;Add Item&quot; Button" classname="prototype-increment1.spec.js" time="2.981">
+<system-out>
+<![CDATA[Staff page title: Hoş Geldiniz, Leyla Yılmaz 👋
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 1: Role-Based Auth &amp; Navigation (UC9) › 1.3: Verify Role-Based Menu Visibility" classname="prototype-increment1.spec.js" time="6.01">
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 2: Manager Add Item Flow (UC1) › 2.1: View Existing Inventory List" classname="prototype-increment1.spec.js" time="5.749">
+<system-out>
+<![CDATA[Inventory Manager can see Add button: [33mtrue[39m
+Existing inventory items: [33m10[39m
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 2: Manager Add Item Flow (UC1) › 2.2: Add New Inventory Item - Complete Flow" classname="prototype-increment1.spec.js" time="7.571">
+<system-out>
+<![CDATA[Initial item count: [33m0[39m
+Add button visible: [33mtrue[39m
+Navigated to /inventory/new
+Current URL: http://localhost:5174/inventory/new
+Selected category ID: 1
+Selected staff ID: 1
+Successfully redirected to inventory list after submission
+✓ Item form submitted successfully - redirected to inventory list
+Final item count after submission: [33m10[39m
+✓ Item count increased -new item visible in table
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 2: Manager Add Item Flow (UC1) › 2.3: Add Item - Validation Errors for Required Fields" classname="prototype-increment1.spec.js" time="6.538">
+<system-out>
+<![CDATA[Form did not submit - still on: http://localhost:5174/inventory/new
+Validation error messages found: [33m3[39m
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 2: Manager Add Item Flow (UC1) › 2.4: Verify NO Edit/Delete Buttons in Prototype" classname="prototype-increment1.spec.js" time="4.587">
+<system-out>
+<![CDATA[✓ Prototype Constraint Verified: No Edit/Delete functionality
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 3: Staff Read-Only View (UC9) › 3.1: View &quot;My Equipment&quot; Table - Only Assigned Items" classname="prototype-increment1.spec.js" time="3.483">
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 3: Staff Read-Only View (UC9) › 3.2: Verify NO Action Buttons (Read-Only)" classname="prototype-increment1.spec.js" time="3.49">
+<system-out>
+<![CDATA[✓ Staff Read-Only Constraint Verified
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 3: Staff Read-Only View (UC9) › 3.3: Staff Cannot Access Admin/Manager Routes" classname="prototype-increment1.spec.js" time="5.172">
+<system-out>
+<![CDATA[Staff blocked from /admin/users - Current URL: http://localhost:5174/login
+Staff blocked from /admin/categories - Current URL: http://localhost:5174/login
+Staff blocked from /admin/vendors - Current URL: http://localhost:5174/login
+Staff blocked from /inventory/new - Current URL: http://localhost:5174/login
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.1: Open Chatbot Panel" classname="prototype-increment1.spec.js" time="24.527">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-38422-UC17-4-1-Open-Chatbot-Panel-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-38422-UC17-4-1-Open-Chatbot-Panel-chromium/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-38422-UC17-4-1-Open-Chatbot-Panel-chromium/error-context.md]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-38422-UC17-4-1-Open-Chatbot-Panel-chromium-retry1/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.2: Execute Query - List Dell Monitors" classname="prototype-increment1.spec.js" time="45.773">
+<failure message="prototype-increment1.spec.js:489:5 4.2: Execute Query - List Dell Monitors" type="FAILURE">
+<![CDATA[  [chromium] › prototype-increment1.spec.js:489:5 › PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.2: Execute Query - List Dell Monitors 
+
+    Error: expect(received).toBeTruthy()
+
+    Received: false
+
+      545 |       
+      546 |       // Accept either: table element, table format, or data response message
+    > 547 |       expect(hasTable || hasTableFormat || hasDataResponse).toBeTruthy();
+          |                                                             ^
+      548 |       await helper.screenshot('query-result-table');
+      549 |       
+      550 |       console.log('✓ Chatbot returned data response (table or text)');
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:547:61
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBeTruthy()
+
+    Received: false
+
+      545 |       
+      546 |       // Accept either: table element, table format, or data response message
+    > 547 |       expect(hasTable || hasTableFormat || hasDataResponse).toBeTruthy();
+          |                                                             ^
+      548 |       await helper.screenshot('query-result-table');
+      549 |       
+      550 |       console.log('✓ Chatbot returned data response (table or text)');
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:547:61
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[Response found with "div.animate-fadeIn" (77 chars)
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium/error-context.md]]
+Response found with "div.animate-fadeIn" (77 chars)
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/error-context.md]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-18ff8--Query---List-Dell-Monitors-chromium-retry1/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.3: Execute Query - Count Projectors" classname="prototype-increment1.spec.js" time="36.338">
+<failure message="prototype-increment1.spec.js:553:5 4.3: Execute Query - Count Projectors" type="FAILURE">
+<![CDATA[  [chromium] › prototype-increment1.spec.js:553:5 › PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.3: Execute Query - Count Projectors 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="chatbot-input"]')
+
+
+      562 |       const query = 'Kaç tane projeksiyon var?';
+      563 |       const chatInput = page.locator('[data-testid="chatbot-input"]');
+    > 564 |       await chatInput.fill(query);
+          |                       ^
+      565 |       await page.click('[data-testid="chatbot-submit"]');
+      566 |       await page.waitForTimeout(10000);
+      567 |       await helper.screenshot('count-query-result');
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:564:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    Error: expect(received).toBeTruthy()
+
+    Received: false
+
+      590 |       // Should contain numerical result
+      591 |       const hasNumber = /\d+/.test(responseText);
+    > 592 |       expect(hasNumber).toBeTruthy();
+          |                         ^
+      593 |       
+      594 |       await helper.screenshot('numerical-result');
+      595 |       console.log('Chatbot result:', responseText.substring(0, 100));
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:592:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium/error-context.md]]
+Response found with "div.animate-fadeIn" (77 chars)
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/error-context.md]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-bf7a0-te-Query---Count-Projectors-chromium-retry1/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.4: Verify Multiple Queries - No Conversation State" classname="prototype-increment1.spec.js" time="47.736">
+<failure message="prototype-increment1.spec.js:598:5 4.4: Verify Multiple Queries - No Conversation State" type="FAILURE">
+<![CDATA[  [chromium] › prototype-increment1.spec.js:598:5 › PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.4: Verify Multiple Queries - No Conversation State 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="chatbot-input"]')
+        - locator resolved to <input value="" disabled type="text" data-testid="chatbot-input" placeholder="Sorunuzu buraya yazın... (örn: Kaç adet masa var?)" class="flex-1 px-5 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:cursor-not-allowed transition-all text-sm bg-white dark:bg-gray-700 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"/>
+        - fill("Lab-101 lokasyonundaki cihazlar")
+      - attempting fill action
+        2 × waiting for element to be visible, enabled and editable
+          - element is not enabled
+        - retrying fill action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and editable
+          - element is not enabled
+        - retrying fill action
+          - waiting 100ms
+        30 × waiting for element to be visible, enabled and editable
+           - element is not enabled
+         - retrying fill action
+           - waiting 500ms
+
+
+      612 |       for (const query of queries) {
+      613 |         const chatInput = page.locator('[data-testid="chatbot-input"]');
+    > 614 |         await chatInput.fill(query);
+          |                         ^
+      615 |         await page.click('[data-testid="chatbot-submit"]');
+      616 |         await page.waitForTimeout(3000);
+      617 |         await helper.screenshot(`query-${queries.indexOf(query) + 1}-result`);
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:614:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="chatbot-input"]')
+        - locator resolved to <input value="" disabled type="text" data-testid="chatbot-input" placeholder="Sorunuzu buraya yazın... (örn: Kaç adet masa var?)" class="flex-1 px-5 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 dark:disabled:bg-gray-900 disabled:cursor-not-allowed transition-all text-sm bg-white dark:bg-gray-700 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500"/>
+        - fill("Lab-101 lokasyonundaki cihazlar")
+      - attempting fill action
+        2 × waiting for element to be visible, enabled and editable
+          - element is not enabled
+        - retrying fill action
+        - waiting 20ms
+        2 × waiting for element to be visible, enabled and editable
+          - element is not enabled
+        - retrying fill action
+          - waiting 100ms
+        30 × waiting for element to be visible, enabled and editable
+           - element is not enabled
+         - retrying fill action
+           - waiting 500ms
+
+
+      612 |       for (const query of queries) {
+      613 |         const chatInput = page.locator('[data-testid="chatbot-input"]');
+    > 614 |         await chatInput.fill(query);
+          |                         ^
+      615 |         await page.click('[data-testid="chatbot-submit"]');
+      616 |         await page.waitForTimeout(3000);
+      617 |         await helper.screenshot(`query-${queries.indexOf(query) + 1}-result`);
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:614:25
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium/error-context.md]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/error-context.md]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-54336-ies---No-Conversation-State-chromium-retry1/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.5: Verify Read-Only - No Database Modifications" classname="prototype-increment1.spec.js" time="16.603">
+<system-out>
+<![CDATA[Dangerous query response: Tüm bilgisayarları sil
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Scenario 4: Chatbot SQL Query Execution (UC17) › 4.6: Verify SQL Query Display (If Enabled)" classname="prototype-increment1.spec.js" time="8.365">
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Prototype Constraints Validation › Constraint 1: Only UC1, UC9, UC17 Implemented" classname="prototype-increment1.spec.js" time="3.625">
+<system-out>
+<![CDATA[Available menu items: [
+  [32m'Dashboard'[39m,
+  [32m'Envanter'[39m,
+  [32m'Hareketler'[39m,
+  [32m'Bakım'[39m,
+  [32m'Satın Alma'[39m,
+  [32m'AI Asistan'[39m,
+  [32m'Raporlar'[39m,
+  [32m'Yönetim'[39m
+]
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Prototype Constraints Validation › Constraint 2: No Edit/Delete Operations Anywhere" classname="prototype-increment1.spec.js" time="5.755">
+<system-out>
+<![CDATA[/ - Edit buttons: 0, Delete buttons: 0
+/inventory - Edit buttons: 0, Delete buttons: 0
+/transactions - Edit buttons: 0, Delete buttons: 0
+]]>
+</system-out>
+</testcase>
+<testcase name="PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Prototype Constraints Validation › Constraint 3: Chatbot Returns Data-Focused Responses" classname="prototype-increment1.spec.js" time="41.108">
+<failure message="prototype-increment1.spec.js:739:5 Constraint 3: Chatbot Returns Data-Focused Responses" type="FAILURE">
+<![CDATA[  [chromium] › prototype-increment1.spec.js:739:5 › PROTOTYPE INCREMENT 1: Core Use Cases (UC1, UC9, UC17) › Prototype Constraints Validation › Constraint 3: Chatbot Returns Data-Focused Responses 
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="chatbot-input"]')
+
+
+      755 |       const dataQuery = 'Kaç tane Dell monitör var?';
+      756 |       const chatInput = page.locator('[data-testid="chatbot-input"]');
+    > 757 |       await chatInput.fill(dataQuery);
+          |                       ^
+      758 |       
+      759 |       // Submit using button instead of Enter key for reliability
+      760 |       await page.click('[data-testid="chatbot-submit"]');
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:757:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium/error-context.md
+
+    Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+
+    TimeoutError: locator.fill: Timeout 15000ms exceeded.
+    Call log:
+      - waiting for locator('[data-testid="chatbot-input"]')
+
+
+      755 |       const dataQuery = 'Kaç tane Dell monitör var?';
+      756 |       const chatInput = page.locator('[data-testid="chatbot-input"]');
+    > 757 |       await chatInput.fill(dataQuery);
+          |                       ^
+      758 |       
+      759 |       // Submit using button instead of Enter key for reliability
+      760 |       await page.click('[data-testid="chatbot-submit"]');
+        at /Users/eneskaynakci/Github/CTIS-SIMS/tests/e2e/tests/prototype-increment1.spec.js:757:23
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/trace.zip
+    Usage:
+
+        npx playwright show-trace ../test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium/error-context.md]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/test-failed-1.png]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/video.webm]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/error-context.md]]
+
+[[ATTACHMENT|test-artifacts/prototype-increment1-PROTO-4a004-urns-Data-Focused-Responses-chromium-retry1/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

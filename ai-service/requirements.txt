@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pymysql
+DBUtils
+requests
+pandas
+cryptography
+python-multipart
+tabulate
+zemberek-python
+jpype1
+dspy-ai
+sqlparse

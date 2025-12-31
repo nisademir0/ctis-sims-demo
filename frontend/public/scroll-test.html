@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbox Scroll Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 20px;
+            background: #f3f4f6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #111827;
+        }
+
+        /* Chat Card - CRITICAL STRUCTURE */
+        .chat-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 220px);
+            overflow: hidden; /* Prevent parent scroll */
+        }
+
+        /* Messages Area - SCROLLABLE */
+        .messages-area {
+            flex: 1 1 0%; /* Critical: flex-basis 0% */
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 24px;
+            background: linear-gradient(to bottom, #f9fafb, white);
+        }
+
+        /* Custom Scrollbar */
+        .messages-area::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .messages-area::-webkit-scrollbar-track {
+            background: #EDF2F7;
+            border-radius: 4px;
+        }
+
+        .messages-area::-webkit-scrollbar-thumb {
+            background: #CBD5E0;
+            border-radius: 4px;
+        }
+
+        .messages-area::-webkit-scrollbar-thumb:hover {
+            background: #A0AEC0;
+        }
+
+        /* Message Bubbles */
+        .message {
+            margin-bottom: 24px;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .message.bot {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 16px;
+            word-wrap: break-word;
+        }
+
+        .message.user .message-content {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+            color: white;
+            border-top-right-radius: 4px;
+        }
+
+        .message.bot .message-content {
+            background: white;
+            border: 1px solid #e5e7eb;
+            color: #111827;
+            border-top-left-radius: 4px;
+        }
+
+        /* Input Area - FIXED */
+        .input-area {
+            flex-shrink: 0; /* Never shrink */
+            border-top: 2px solid #e5e7eb;
+            background: white;
+            padding: 20px;
+        }
+
+        .input-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .input-form input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #d1d5db;
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .input-form input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .input-form button {
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .input-form button:hover {
+            background: #2563eb;
+        }
+
+        .tip {
+            margin-top: 12px;
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        /* Status Indicator */
+        .status {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 20px;
+            background: #10b981;
+            color: white;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="status">✅ Scroll Test Ready</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Chatbox Scroll Test</h1>
+            <p style="margin-top: 8px; color: #6b7280;">Bu test sayfası scroll işlevselliğini kontrol eder</p>
+        </div>
+
+        <!-- Chat Card Structure -->
+        <div class="chat-card">
+            <!-- Messages Area (Scrollable) -->
+            <div class="messages-area" id="messagesArea">
+                <!-- Messages will be added here -->
+            </div>
+
+            <!-- Input Area (Fixed) -->
+            <div class="input-area">
+                <form class="input-form" onsubmit="sendMessage(event)">
+                    <input 
+                        type="text" 
+                        id="messageInput"
+                        placeholder="Mesajınızı yazın..."
+                        autocomplete="off"
+                    />
+                    <button type="submit">Gönder</button>
+                </form>
+                <div class="tip">
+                    💡 <strong>Test:</strong> Yukarı/aşağı kaydırın. Scroll çalışmalı!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let messageCount = 0;
+
+        // Add initial messages
+        function addInitialMessages() {
+            addMessage('bot', 'Merhaba! 👋 Ben AI asistanıyım.');
+            addMessage('bot', 'Bu test sayfası scroll işlevselliğini kontrol eder.');
+            addMessage('user', 'Merhaba!');
+            addMessage('bot', 'Aşağıdaki butona tıklayarak daha fazla mesaj ekleyebilirsiniz.');
+        }
+
+        // Add a message
+        function addMessage(type, text) {
+            const messagesArea = document.getElementById('messagesArea');
+            const message = document.createElement('div');
+            message.className = `message ${type}`;
+            
+            const content = document.createElement('div');
+            content.className = 'message-content';
+            content.textContent = text;
+            
+            message.appendChild(content);
+            messagesArea.appendChild(message);
+            
+            // Scroll to bottom
+            messagesArea.scrollTop = messagesArea.scrollHeight;
+            
+            messageCount++;
+        }
+
+        // Send message form handler
+        function sendMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('messageInput');
+            const text = input.value.trim();
+            
+            if (text) {
+                addMessage('user', text);
+                input.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    const responses = [
+                        'Mesajınızı aldım! 👍',
+                        'İşte bir yanıt...',
+                        'Scroll çalışıyor mu? 🤔',
+                        'Daha fazla mesaj ekleyelim!',
+                        'Chatbox artık kaydırılabilir olmalı.',
+                        'Test başarılı! ✅'
+                    ];
+                    const response = responses[Math.floor(Math.random() * responses.length)];
+                    addMessage('bot', response);
+                }, 500);
+            }
+        }
+
+        // Add bulk messages for scroll testing
+        function addBulkMessages() {
+            for (let i = 0; i < 5; i++) {
+                addMessage('user', `Test mesajı ${messageCount + 1}`);
+                addMessage('bot', `Bu ${messageCount} numaralı yanıt. Scroll testi için eklendi.`);
+            }
+        }
+
+        // Initialize
+        addInitialMessages();
+
+        // Add bulk messages button (optional)
+        setTimeout(() => {
+            console.log('✅ Test sayfası yüklendi');
+            console.log('📊 Mesaj sayısı:', messageCount);
+            console.log('🎯 Scroll testi için daha fazla mesaj ekleyin');
+            
+            // Auto-add messages for immediate test
+            addBulkMessages();
+        }, 1000);
+
+        // Log scroll events
+        document.getElementById('messagesArea').addEventListener('scroll', function() {
+            console.log('🔄 Scroll position:', this.scrollTop);
+        });
+    </script>
+</body>
+</html>

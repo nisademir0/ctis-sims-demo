@@ -1,0 +1,29 @@
+{
+  "name": "ctis-sims-e2e-tests",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Comprehensive E2E tests for CTIS-SIMS based on SRS requirements",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:chrome": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:safari": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=mobile-chrome --project=mobile-safari",
+    "test:auth": "playwright test tests/auth",
+    "test:inventory": "playwright test tests/inventory",
+    "test:transactions": "playwright test tests/transactions",
+    "test:maintenance": "playwright test tests/maintenance",
+    "test:reports": "playwright test tests/reports",
+    "report:html": "playwright show-report test-results/html-report",
+    "report:generate": "node scripts/generate-report.js",
+    "install": "playwright install --with-deps"
+  },
+  "keywords": ["e2e", "playwright", "testing", "ctis-sims"],
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "dotenv": "^16.3.1"
+  }
+}

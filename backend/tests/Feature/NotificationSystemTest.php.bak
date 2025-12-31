@@ -1,0 +1,223 @@
+<?php
+
+namespace Tests\Feature;
+
+use Tests\TestCase;
+use App\Models\User;
+use App\Models\Item;
+use App\Models\Transaction;
+use App\Models\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
+
+class NotificationSystemTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->seed();
+    }
+
+    /**
+     * Test getting all notifications for authenticated user
+     */
+    public function test_user_can_get_their_notifications()
+    {
+        $user = User::where('email', 'admin@ctis.edu.tr')->first();
+        Sanctum::actingAs($user);
+
+        // Create test notifications
+        Notification::create([
+            'user_id' => $user->id,
+            'type' => 'success',
+            'title' => 'Test Notification',
+            'message' => 'This is a test',
+        ]);
+
+        $response = $this->getJson('/api/notifications');
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                'notifications' => [
+                    '*' => ['id', 'type', 'title', 'message', 'is_read', 'created_at']
+                ],
+                'pagination',
+                'unread_count'
+            ]);
+    }
+
+    /**
+     * Test getting unread notification count
+     */
+    public function test_user_can_get_unread_count()
+    {
+        $user = User::where('email', 'admin@ctis.edu.tr')->first();
+        Sanctum::actingAs($user);
+
+        // Create unread notifications
+        Notification::create([
+            'user_id' => $user->id,
+            'type' => 'info',
+            'title' => 'Unread 1',
+            'message' => 'Message 1',
+        ]);
+
+        Notification::create([
+            'user_id' => $user->id,
+            'type' => 'info',
+            'title' => 'Unread 2',
+            'message' => 'Message 2',
+        ]);
+
+        $response = $this->getJson('/api/notifications/unread-count');
+
+        $response->assertStatus(200)
+            ->assertJson(['count' => 2]);
+    }
+
+    /**
+     * Test marking notification as read
+     */
+    public function test_user_can_mark_notification_as_read()
+    {
+        $user = User::where('email', 'admin@ctis.edu.tr')->first();
+        Sanctum::actingAs($user);
+
+        $notification = Notification::create([
+            'user_id' => $user->id,
+            'type' => 'info',
+            'title' => 'Test',
+            'message' => 'Test message',
+        ]);
+
+        $response = $this->postJson("/api/notifications/{$notification->id}/read");
+
+        $response->assertStatus(200)
+            ->assertJson(['message' => 'Bildirim okundu olarak işaretlendi']);
+
+        $this->assertTrue($notification->fresh()->is_read);
+    }
+
+    /**
+     * Test marking all notifications as read
+     */
+    public function test_user_can_mark_all_notifications_as_read()
+    {
+        $user = User::where('email', 'admin@ctis.edu.tr')->first();
+        Sanctum::actingAs($user);
+
+        // Create multiple unread notifications
+        for ($i = 0; $i < 5; $i++) {
+            Notification::create([
+                'user_id' => $user->id,
+                'type' => 'info',
+                'title' => "Test $i",
+                'message' => "Message $i",
+            ]);
+        }
+
+        $response = $this->postJson('/api/notifications/mark-all-read');
+
+        $response->assertStatus(200)
+            ->assertJsonPath('count', 5);
+
+        $unreadCount = Notification::where('user_id', $user->id)->unread()->count();
+        $this->assertEquals(0, $unreadCount);
+    }
+
+    /**
+     * Test deleting a notification
+     */
+    public function test_user_can_delete_notification()
+    {
+        $user = User::where('email', 'admin@ctis.edu.tr')->first();
+        Sanctum::actingAs($user);
+
+        $notification = Notification::create([
+            'user_id' => $user->id,
+            'type' => 'info',
+            'title' => 'Test',
+            'message' => 'To be deleted',
+        ]);
+
+        $response = $this->deleteJson("/api/notifications/{$notification->id}");
+
+        $response->assertStatus(200)
+            ->assertJson(['message' => 'Bildirim başarıyla silindi']);
+
+        $this->assertNull(Notification::find($notification->id));
+    }
+
+    /**
+     * Test user cannot access other user's notifications
+     */
+    public function test_user_cannot_access_other_users_notifications()
+    {
+        $user1 = User::where('email', 'admin@ctis.edu.tr')->first();
+        $user2 = User::where('email', 'serkan@ctis.edu.tr')->first();
+
+        $notification = Notification::create([
+            'user_id' => $user2->id,
+            'type' => 'info',
+            'title' => 'Private',
+            'message' => 'User 2 only',
+        ]);
+
+        Sanctum::actingAs($user1);
+
+        $response = $this->postJson("/api/notifications/{$notification->id}/read");
+
+        $response->assertStatus(404);
+    }
+
+    /**
+     * Test notification filtering by status
+     */
+    public function test_user_can_filter_notifications()
+    {
+        $user = User::where('email', 'admin@ctis.edu.tr')->first();
+        Sanctum::actingAs($user);
+
+        // Create read and unread notifications
+        $unread = Notification::create([
+            'user_id' => $user->id,
+            'type' => 'info',
+            'title' => 'Unread',
+            'message' => 'Unread message',
+        ]);
+
+        $read = Notification::create([
+            'user_id' => $user->id,
+            'type' => 'info',
+            'title' => 'Read',
+            'message' => 'Read message',
+            'is_read' => true,
+            'read_at' => now(),
+        ]);
+
+        // Filter unread
+        $response = $this->getJson('/api/notifications?filter=unread');
+        $response->assertStatus(200);
+        $notifications = $response->json('notifications');
+        $this->assertCount(1, $notifications);
+        $this->assertEquals($unread->id, $notifications[0]['id']);
+
+        // Filter read
+        $response = $this->getJson('/api/notifications?filter=read');
+        $response->assertStatus(200);
+        $notifications = $response->json('notifications');
+        $this->assertCount(1, $notifications);
+        $this->assertEquals($read->id, $notifications[0]['id']);
+    }
+
+    /**
+     * Test unauthenticated user cannot access notifications
+     */
+    public function test_unauthenticated_user_cannot_access_notifications()
+    {
+        $response = $this->getJson('/api/notifications');
+        $response->assertStatus(401);
+    }
+}

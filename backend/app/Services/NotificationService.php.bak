@@ -1,0 +1,231 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\Notification;
+use App\Models\User;
+
+class NotificationService
+{
+    /**
+     * Create a notification for a user
+     */
+    public function createNotification(
+        User|int $user,
+        string $type,
+        string $title,
+        string $message,
+        ?string $actionUrl = null,
+        ?string $actionText = null,
+        ?array $metadata = null
+    ): Notification {
+        $userId = $user instanceof User ? $user->id : $user;
+
+        return Notification::create([
+            'user_id' => $userId,
+            'type' => $type,
+            'title' => $title,
+            'message' => $message,
+            'action_url' => $actionUrl,
+            'action_text' => $actionText,
+            'metadata' => $metadata,
+        ]);
+    }
+
+    /**
+     * Create notification for transaction checkout
+     */
+    public function notifyCheckout($transaction)
+    {
+        return $this->createNotification(
+            $transaction->user_id,
+            'success',
+            'Ödünç Alma Başarılı',
+            "{$transaction->item->name} başarıyla ödünç alındı. İade tarihi: " . 
+            $transaction->due_date->format('d.m.Y'),
+            "/transactions/{$transaction->id}",
+            'İşlemi Görüntüle',
+            [
+                'transaction_id' => $transaction->id,
+                'item_id' => $transaction->item_id,
+            ]
+        );
+    }
+
+    /**
+     * Create notification for transaction return
+     */
+    public function notifyReturn($transaction)
+    {
+        $message = $transaction->late_fee > 0
+            ? "Ürün iade edildi. Gecikme ücreti: " . number_format($transaction->late_fee, 2) . " TL"
+            : "Ürün başarıyla iade edildi. Teşekkür ederiz!";
+
+        return $this->createNotification(
+            $transaction->user_id,
+            $transaction->late_fee > 0 ? 'warning' : 'success',
+            'Ürün İade Edildi',
+            $message,
+            "/transactions/{$transaction->id}",
+            'İşlemi Görüntüle',
+            [
+                'transaction_id' => $transaction->id,
+                'item_id' => $transaction->item_id,
+                'late_fee' => $transaction->late_fee,
+            ]
+        );
+    }
+
+    /**
+     * Create notification for overdue transaction
+     */
+    public function notifyOverdue($transaction)
+    {
+        $daysOverdue = $transaction->daysOverdue();
+        
+        return $this->createNotification(
+            $transaction->user_id,
+            'error',
+            'Gecikmiş Ürün',
+            "'{$transaction->item->name}' ürünü {$daysOverdue} gün gecikmiş. Gecikme ücreti: " . 
+            number_format($transaction->calculateLateFee(), 2) . " TL",
+            "/transactions/{$transaction->id}",
+            'Hemen İade Et',
+            [
+                'transaction_id' => $transaction->id,
+                'item_id' => $transaction->item_id,
+                'days_overdue' => $daysOverdue,
+            ]
+        );
+    }
+
+    /**
+     * Create notification for due date reminder
+     */
+    public function notifyDueSoon($transaction)
+    {
+        return $this->createNotification(
+            $transaction->user_id,
+            'warning',
+            'İade Tarihi Hatırlatması',
+            "'{$transaction->item->name}' ürününün iade tarihi yarın. Lütfen iade edin veya süre uzatın.",
+            "/transactions/{$transaction->id}",
+            'İşlemi Görüntüle',
+            [
+                'transaction_id' => $transaction->id,
+                'item_id' => $transaction->item_id,
+            ]
+        );
+    }
+
+    /**
+     * Create notification for maintenance request
+     */
+    public function notifyMaintenanceRequest($maintenanceRequest)
+    {
+        return $this->createNotification(
+            $maintenanceRequest->user_id,
+            'info',
+            'Bakım Talebi Oluşturuldu',
+            "{$maintenanceRequest->item->name} için bakım talebiniz iletildi.",
+            "/maintenance-requests/{$maintenanceRequest->id}",
+            'Talebi Görüntüle',
+            [
+                'maintenance_request_id' => $maintenanceRequest->id,
+                'item_id' => $maintenanceRequest->item_id,
+            ]
+        );
+    }
+
+    /**
+     * Create notification for maintenance status update
+     */
+    public function notifyMaintenanceStatusUpdate($maintenanceRequest)
+    {
+        $statusMap = [
+            'pending' => 'Beklemede',
+            'in_progress' => 'İşlemde',
+            'completed' => 'Tamamlandı',
+            'cancelled' => 'İptal Edildi'
+        ];
+        $statusTR = $statusMap[$maintenanceRequest->status] ?? $maintenanceRequest->status;
+        
+        return $this->createNotification(
+            $maintenanceRequest->user_id,
+            'info',
+            'Bakım Durumu Güncellendi',
+            "Bakım talebinizin durumu: {$statusTR}",
+            "/maintenance-requests/{$maintenanceRequest->id}",
+            'Talebi Görüntüle',
+            [
+                'maintenance_request_id' => $maintenanceRequest->id,
+                'status' => $maintenanceRequest->status,
+            ]
+        );
+    }
+
+    /**
+     * Create notification for purchase request approval/rejection
+     */
+    public function notifyPurchaseRequestStatusUpdate($purchaseRequest)
+    {
+        $type = $purchaseRequest->status === 'approved' ? 'success' : 
+                ($purchaseRequest->status === 'rejected' ? 'error' : 'info');
+        
+        $statusMap = [
+            'pending' => 'Beklemede',
+            'approved' => 'Onaylandı',
+            'rejected' => 'Reddedildi',
+            'ordered' => 'Sipariş Edildi',
+            'received' => 'Teslim Alındı'
+        ];
+        $statusTR = $statusMap[$purchaseRequest->status] ?? $purchaseRequest->status;
+        
+        return $this->createNotification(
+            $purchaseRequest->requester_id,
+            $type,
+            'Satın Alma Talebi ' . $statusTR,
+            "Satın alma talebiniz {$statusTR}.",
+            "/purchase-requests/{$purchaseRequest->id}",
+            'Talebi Görüntüle',
+            [
+                'purchase_request_id' => $purchaseRequest->id,
+                'status' => $purchaseRequest->status,
+            ]
+        );
+    }
+
+    /**
+     * Get unread notification count for a user
+     */
+    public function getUnreadCount(User|int $user): int
+    {
+        $userId = $user instanceof User ? $user->id : $user;
+        return Notification::where('user_id', $userId)->unread()->count();
+    }
+
+    /**
+     * Mark all notifications as read for a user
+     */
+    public function markAllAsRead(User|int $user): int
+    {
+        $userId = $user instanceof User ? $user->id : $user;
+        
+        return Notification::where('user_id', $userId)
+            ->unread()
+            ->update([
+                'is_read' => true,
+                'read_at' => now(),
+            ]);
+    }
+
+    /**
+     * Delete old read notifications (cleanup)
+     */
+    public function deleteOldNotifications(int $daysOld = 30): int
+    {
+        return Notification::where('is_read', true)
+            ->where('read_at', '<', now()->subDays($daysOld))
+            ->delete();
+    }
+}
